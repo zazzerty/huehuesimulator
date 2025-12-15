@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Huehue Simulator - Start</title>
+</head>
+<style>
+.HHgamestartbuttonthing {
+color: #ffffff;
+background-color: #000000;
+
+border-radius: 15px;
+border: double;
+
+text-align: center;
+
+font-size: 8em;
+
+text-decoration: bold;
+
+margin: 100px 400px;
+
+display: inline-block;
+
+cursor: help;
+}
+</style>
+<style>
+body {
+background: rgb(152, 152, 152);
+}
+</style>
+<script type="text/javascript">
+// sorry but I mostly copied at the code from here, still better than AI though --> https://stackoverflow.com/questions/18038671/how-can-i-create-a-button-that-links-to-multiple-websites-randomly
+    var gameseedurls = [
+        "https://zazzerty.github.io/huehuesimulator/seed0.html",
+        'https://zazzerty.github.io/huehuesimulator/seed1.html',
+		'https://zazzerty.github.io/huehuesimulator/seed2.html',
+		'https://zazzerty.github.io/huehuesimulator/seed3.html',
+		'https://zazzerty.github.io/huehuesimulator/seed4.html',
+		'https://zazzerty.github.io/huehuesimulator/seed5.html',
+		'https://zazzerty.github.io/huehuesimulator/seed6.html',
+		'https://zazzerty.github.io/huehuesimulator/seed7.html',
+		'https://zazzerty.github.io/huehuesimulator/seed8.html',
+		'https://zazzerty.github.io/huehuesimulator/seed9.html',
+		'https://zazzerty.github.io/huehuesimulator/seed10.html',
+		'https://zazzerty.github.io/huehuesimulator/seed11.html',
+		'https://zazzerty.github.io/huehuesimulator/seed12.html',
+		'https://zazzerty.github.io/huehuesimulator/seed13.html',
+		'https://zazzerty.github.io/huehuesimulator/seed14.html',
+		'https://zazzerty.github.io/huehuesimulator/seed15.html',
+		'https://zazzerty.github.io/huehuesimulator/seed16.html',
+		'https://zazzerty.github.io/huehuesimulator/seed17.html',
+		'https://zazzerty.github.io/huehuesimulator/seed18.html',
+		'https://zazzerty.github.io/huehuesimulator/seed19.html',
+		'https://zazzerty.github.io/huehuesimulator/seed20.html'
+    ];
+
+    function gameseedrandom() {
+        var gameseedurl = gameseedurls[Math.floor(Math.random()*gameseedurls.length)];
+        window.location = gameseedurl; // redirect thing yay
+    }
+</script>
+<body>
+<style>
+#huehuetopbar {
+text-align: left;
+
+background-color: rgb(0, 0, 0);
+
+color: rgb(255, 255, 255);
+
+border-radius: 10px;
+border-color: rgb(152, 152, 152);
+border-style: double;
+border-width: 10px;
+}
+
+.huehuetopbarcreatornotelink {
+font-size: 4em;
+
+text-decoration: bold underline italic;
+
+color: rgb(0, 0, 0);
+background: rgb(255, 255, 255);
+
+text-align: right;
+
+margin-left: 80px;
+}
+</style>
+<div id="huehuetopbar">
+<span style="font-size:6em;margin-left:6.5px;">Huehue Simulator</span> <span style="font-size:6em;margin-left:40px;margin-top:10px;">|</span> <a class="huehuetopbarcreatornotelink" href="https://zazzerty.github.io/huehuesimulator/creatornote.txt">Creator Note</a>
+<br><br>
+</div>
+<br><br>
+<br><br>
+<center>
+<span style="color:#ffffff;background:#000000;font-size:2em;text-decoration:bold;">Click the link below to be sent into a random game seed</span>
+</center>
+<a class="HHgamestartbuttonthing" href="#" onClick="gameseedrandom(); return false;">Huehue?</a>
+</body>
+</html>

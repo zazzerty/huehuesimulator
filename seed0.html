@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Huehue Simulator - Seed 0</title>
+<script>
+// Source - https://stackoverflow.com/questions/73346380/making-a-div-move-randomly-around-using-css
+// Posted by code, modified by community. See post 'Timeline' for change history
+// Retrieved 2025-12-12, License - CC BY-SA 4.0
+
+const root = document.querySelector(":root"); // we first get the root element
+for(let i = 0; i < 10; i++) {
+  root.style.setProperty(`--rando${i}`, `${Math.floor(Math.random() * 450) + 1}px`);
+}
+</script>
+
+<style>
+/* this is where the main color variables are */
+
+:root {
+	--target-background: #4d4336;
+	--target-text-color: #fcfcfc;
+	--main-background: #7a6d52;
+}
+</style>
+
+<style>
+
+@keyframes targetmoverandomone {
+  0% {left: var(--rando0); top: var(--rando1);}
+  20% {left: var(--rando2); top: var(--rando3);}
+  40% {left: var(--rando4); top: var(--rando5);}
+  60% {left: var(--rando6); top: var(--rando7);}
+  80% {left: var(--rando4); top: var(--rando5);}
+  100% {left: var(--rando1); top: var(--rando0);}
+}
+
+@keyframes targetmoverandomtwo {
+  0% {left: var(--rando1); top: var(--rando1);}
+  20% {left: var(--rando2); top: var(--rando3);}
+  40% {left: var(--rando3); top: var(--rando5);}
+  60% {left: var(--rando4); top: var(--rando4);}
+  80% {left: var(--rando2); top: var(--rando3);}
+  100% {left: var(--rando1); top: var(--rando0);}
+}
+
+@keyframes targetmoverandomthree {
+  0% {left: var(--rando0); top: var(--rando1);}
+  20% {left: var(--rando3); top: var(--rando3);}
+  40% {left: var(--rando2); top: var(--rando5);}
+  60% {left: var(--rando1); top: var(--rando7);}
+  80% {left: var(--rando4); top: var(--rando5);}
+  100% {left: var(--rando1); top: var(--rando3);}
+}
+
+@keyframes targetmoverandomfour {
+  0% {left: var(--rando1); top: var(--rando1);}
+  20% {left: var(--rando0); top: var(--rando3);}
+  40% {left: var(--rando0); top: var(--rando0);}
+  60% {left: var(--rando4); top: var(--rando7);}
+  80% {left: var(--rando4); top: var(--rando5);}
+  100% {left: var(--rando1); top: var(--rando6);}
+}
+
+@keyframes targetmoverandomfive {
+  0% {left: var(--rando0); top: var(--rando1);}
+  20% {left: var(--rando2); top: var(--rando3);}
+  40% {left: var(--rando4); top: var(--rando5);}
+  60% {left: var(--rando6); top: var(--rando7);}
+  80% {left: var(--rando0); top: var(--rando5);}
+  100% {left: var(--rando1); top: var(--rando6);}
+}
+
+body {
+background-color: var(--main-background);
+}
+
+#huehuetargetbuttonone {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 2em;
+}
+
+
+#huehuetargetbuttontwo {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 1.5em;
+}
+
+#huehuetargetbuttonthree {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 2.5em;
+}
+
+#huehuetargetbuttonfour {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 1.5em;
+}
+
+
+#huehuetargetbuttonfive {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 1em;
+}
+
+#huehuetargetone {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: targetmoverandomone;
+  animation-duration: 3.5s;
+  animation-iteration-count: infinite;
+}
+
+#huehuetargettwo {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: targetmoverandomtwo;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+#huehuetargetthree {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: targetmoverandomthree;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+#huehuetargetfour {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: targetmoverandomfour;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+}
+
+#huehuetargetfive {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: targetmoverandomfive;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+</style>
+</head>
+<script>
+var hitsound = new Audio ('https://zazzerty.github.io/huehuesimulator/huehuegametargethitsound.mp3');
+
+function huehuestartthegame() {
+	hitsound.play()
+	document.getElementById("huehuegamestart").style.display="none"; 
+	document.getElementById("huehuetargetone").style.display="inline-block";
+}
+
+function huehuetargetonedestroyed() {
+	hitsound.play()
+	document.getElementById("huehuetargetone").style.display="none"; 
+	document.getElementById("huehuetargettwo").style.display="inline-block"; 
+}
+
+function huehuetargettwodestroyed() { 
+	hitsound.play()
+	document.getElementById("huehuetargettwo").style.display="none"; 
+	document.getElementById("huehuetargetthree").style.display="inline-block"; 
+}
+function huehuetargetthreedestroyed() {
+	hitsound.play() 
+	document.getElementById("huehuetargetthree").style.display="none"; 
+	document.getElementById("huehuetargetfour").style.display="inline-block"; 
+}
+
+function huehuetargetfourdestroyed() {
+	hitsound.play()
+	document.getElementById("huehuetargetfour").style.display="none"; 
+	document.getElementById("huehuetargetfive").style.display="inline-block"; 
+}
+
+function huehuetargetfivedestroyed() { 
+	hitsound.play()
+	document.getElementById("huehuetargetfive").style.display="none"; 
+	document.getElementById("huehueleveldonediv").style.display="inline-block"; 
+}
+</script>
+<body>
+<style>
+
+#huehuegamestart {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: help;
+  font-size: 1em;
+  text-align: left;
+}
+
+#huehuegamestartbutton {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: copy;
+  font-size: 1em;
+}
+
+</style>
+<div id="huehuegamestart">
+<h1>Mono-Dirt Road</h1>
+<hr>
+<p>This road paves the way to every location in the planet. However the Huehues are causing trouble, use your cursor to click and get rid of them.</p>
+<br>
+<button id="huehuegamestartbutton" onclick="huehuestartthegame()">Start Game</button>
+<br>
+</div>
+<center>
+<div id="huehuetargetone" style="display:none;">
+<button id="huehuetargetbuttonone" onclick="huehuetargetonedestroyed()">Huehue</button>
+</div>
+<br><br>
+<br><br>
+<div id="huehuetargettwo" style="display:none;">
+<button id="huehuetargetbuttontwo" onclick="huehuetargettwodestroyed()">Huehue</button>
+</div>
+<br><br>
+<br><br>
+<div id="huehuetargetthree" style="display:none;">
+<button id="huehuetargetbuttonthree" onclick="huehuetargetthreedestroyed()">Huehue</button>
+</div>
+<br><br>
+<br><br>
+<br><br>
+<div id="huehuetargetfour" style="display:none;">
+<button id="huehuetargetbuttonfour" onclick="huehuetargetfourdestroyed()">Huehue</button>
+</div>
+<br><br>
+<br><br>
+<div id="huehuetargetfive" style="display:none;">
+<button id="huehuetargetbuttonfive" onclick="huehuetargetfivedestroyed()">Huehue</button>
+</div>
+<br><br>
+<br><br>
+</center>
+<style>
+#huehueleveldonediv {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: help;
+  font-size: 1em;
+  text-align: left;
+}
+
+#huehuegameendbutton {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: copy;
+  font-size: 1em;
+}
+</style>
+<script>
+    function returntohomebutton() {
+        window.location.href="https://zazzerty.github.io/huehuesimulator/";
+    }
+</script>
+<div id="huehueleveldonediv" style="display:none;">
+<h1>You cleared Mono-Dirt Road</h1>
+<hr>
+<button id="huehuegameendbutton" onclick="returntohomebutton()">Return to start</button>
+<br>
+</div>
+</body>
+</html>
