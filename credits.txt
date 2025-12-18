@@ -1,0 +1,35 @@
+HueHue Simulator Credits
+
+== Home Page ==
+Programming: zazzerty
+
+== Seed 0: Mono-Dirt Road ==
+Programming: zazzerty
+
+== Seed 1: The Whitespace ==
+Programming: zazzerty
+
+== Seed 2: Capability ==
+Programming: zazzerty
+
+== Seed 3: Rust ==
+Programming: zazzerty
+
+Custom Background (huehuegameseed3-rust-BG-Chevelle.png): TrikeBoi5
+Power Switch ON image (huehuegameseed3switchon.png): zazzerty
+Power Switch OFF image (huehuegameseed3switchoff.png): zazzerty
+
+== Seed 4: Flash ==
+Programming: zazzerty
+
+== Seed 5: Timer ==
+Programming: zazzerty
+
+
+
+
+
+
+== Other assets ==
+
+Huehue target click sound (huehuegametargethitsound.mp3): zazzerty
