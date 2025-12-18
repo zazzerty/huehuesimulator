@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Huehue Simulator - Seed 3</title>
+<script>
+// Source - https://stackoverflow.com/questions/73346380/making-a-div-move-randomly-around-using-css
+// Posted by code, modified by community. See post 'Timeline' for change history
+// Retrieved 2025-12-12, License - CC BY-SA 4.0
+
+const root = document.querySelector(":root"); // we first get the root element
+for(let i = 0; i < 10; i++) {
+  root.style.setProperty(`--rando${i}`, `${Math.floor(Math.random() * 450) + 1}px`);
+}
+</script>
+
+<style>
+/* this is where the main color variables are */
+
+:root {
+	--target-background: #bf3b00;
+	--target-text-color: #010090;
+}
+</style>
+
+<style>
+
+@keyframes targetmoverandomone {
+  0% {left: var(--rando0); top: var(--rando5);}
+  20% {left: var(--rando1); top: var(--rando4);}
+  40% {left: var(--rando2); top: var(--rando5);}
+  60% {left: var(--rando3); top: var(--rando1);}
+  80% {left: var(--rando4); top: var(--rando5);}
+  100% {left: var(--rando4); top: var(--rando2);}
+}
+
+@keyframes targetmoverandomtwo {
+  0% {left: var(--rando1); top: var(--rando5);}
+  20% {left: var(--rando1); top: var(--rando2);}
+  40% {left: var(--rando1); top: var(--rando4);}
+  60% {left: var(--rando1); top: var(--rando5);}
+  80% {left: var(--rando2); top: var(--rando3);}
+  100% {left: var(--rando5); top: var(--rando1);}
+}
+
+@keyframes targetmoverandomthree {
+  0% {left: var(--rando1); top: var(--rando6);}
+  20% {left: var(--rando2); top: var(--rando5);}
+  40% {left: var(--rando3); top: var(--rando4);}
+  60% {left: var(--rando4); top: var(--rando3);}
+  80% {left: var(--rando5); top: var(--rando2);}
+  100% {left: var(--rando6); top: var(--rando1);}
+}
+
+@keyframes targetmoverandomfour {
+  0% {left: var(--rando0); top: var(--rando6);}
+  20% {left: var(--rando1); top: var(--rando7);}
+  40% {left: var(--rando2); top: var(--rando0);}
+  60% {left: var(--rando3); top: var(--rando1);}
+  80% {left: var(--rando4); top: var(--rando2);}
+  100% {left: var(--rando5); top: var(--rando3);}
+}
+
+@keyframes targetmoverandomfive {
+  0% {left: var(--rando3); top: var(--rando0);}
+  20% {left: var(--rando2); top: var(--rando1);}
+  40% {left: var(--rando1); top: var(--rando2);}
+  60% {left: var(--rando0); top: var(--rando3);}
+  80% {left: var(--rando7); top: var(--rando4);}
+  100% {left: var(--rando6); top: var(--rando5);}
+}
+
+body {
+background: url(https://zazzerty.github.io/huehuesimulator/huehuegameseed3-rust-BG-Chevelle.png);
+}
+
+
+/*for the blackout function*/
+
+.powerout {
+background: #000000;
+
+#huehuetargetbuttonone {
+  background-color: #000000;
+  color: #000000;
+  
+  border-color: black;
+  border-style: solid;
+  border-width: 5px;
+}
+
+#huehuetargetbuttontwo {
+  background-color: #000000;
+  color: #000000;
+  
+  border-color: black;
+  border-style: solid;
+  border-width: 5px;
+}
+
+#huehuetargetbuttonthree {
+  background-color: #000000;
+  color: #000000;
+  
+  border-color: black;
+  border-style: solid;
+  border-width: 5px;
+}
+
+#huehuetargetbuttonfour {
+  background-color: #000000;
+  color: #000000;
+  
+  border-color: black;
+  border-style: solid;
+  border-width: 5px;
+}
+
+#huehuetargetbuttonfive {
+  background-color: #000000;
+  color: #000000;
+  
+  border-color: black;
+  border-style: solid;
+  border-width: 5px;
+}
+
+#huehuepowerswitchbutton {
+background: url(https://zazzerty.github.io/huehuesimulator/huehuegameseed3switchoff.png);
+  width: 216px;
+  height: 240px;
+  cursor: pointer;
+}
+
+}
+
+#huehuetargetbuttonone {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 2em;
+  transition: 0.2s;
+}
+
+
+#huehuetargetbuttontwo {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 2.5em;
+  transition: 0.2s;
+}
+
+#huehuetargetbuttonthree {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 2.5em;
+  transition: 0.2s;
+}
+
+#huehuetargetbuttonfour {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 1.5em;
+  transition: 0.2s;
+}
+
+
+#huehuetargetbuttonfive {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 3em;
+  transition: 0.2s;
+}
+
+#huehuetargetone {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: targetmoverandomone;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+#huehuetargettwo {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: targetmoverandomtwo;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+}
+
+#huehuetargetthree {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: targetmoverandomthree;
+  animation-duration: 3.5s;
+  animation-iteration-count: infinite;
+}
+
+#huehuetargetfour {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: targetmoverandomfour;
+  animation-duration: 3.5s;
+  animation-iteration-count: infinite;
+}
+
+#huehuetargetfive {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: targetmoverandomfive;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+</style>
+</head>
+<script>
+var hitsound = new Audio ('https://zazzerty.github.io/huehuesimulator/huehuegametargethitsound.mp3');
+
+function blackout() {
+    var element = document.body;
+    element.classList.toggle("powerout");
+}
+
+setInterval(blackout, 3800);
+
+function huehuestartthegame() {
+	hitsound.play()
+	document.getElementById("huehuegamestart").style.display="none";
+	document.getElementById("huehuepowerswitchdivid").style.display="inline-block";
+	document.getElementById("huehuetargetone").style.display="inline-block";
+}
+
+function huehuetargetonedestroyed() {
+	hitsound.play()
+	document.getElementById("huehuetargetone").style.display="none"; 
+	document.getElementById("huehuetargettwo").style.display="inline-block"; 
+}
+
+function huehuetargettwodestroyed() { 
+	hitsound.play()
+	document.getElementById("huehuetargettwo").style.display="none"; 
+	document.getElementById("huehuetargetthree").style.display="inline-block"; 
+}
+function huehuetargetthreedestroyed() {
+	hitsound.play() 
+	document.getElementById("huehuetargetthree").style.display="none"; 
+	document.getElementById("huehuetargetfour").style.display="inline-block"; 
+}
+
+function huehuetargetfourdestroyed() {
+	hitsound.play()
+	document.getElementById("huehuetargetfour").style.display="none"; 
+	document.getElementById("huehuetargetfive").style.display="inline-block"; 
+}
+
+function huehuetargetfivedestroyed() { 
+	hitsound.play()
+	document.getElementById("huehuetargetfive").style.display="none"; 
+	document.getElementById("huehueleveldonediv").style.display="inline-block"; 
+}
+
+function poweron() {
+    var element = document.body;
+    element.classList.toggle("powerout");
+}
+</script>
+<body>
+<style>
+
+#huehuegamestart {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: help;
+  font-size: 1em;
+  text-align: left;
+  
+  border-color: #782d0b;
+  border: solid;
+  border-width: 2px;
+  
+  margin-left: 1px;
+}
+
+#huehuegamestartbutton {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: copy;
+  font-size: 1em;
+  
+  margin-left: 2px;
+  margin-bottom: 2px;
+}
+
+</style>
+<div id="huehuegamestart">
+<h1>Rust</h1>
+<hr>
+<p>You angered them too much didn't you?</p>
+<p>You are in danger.</p>
+<p>Left-click to fight them off and escape in your rusty Chevelle.</p>
+<p>The power is faulty, but you do have the switch to turn it back on incase.</p>
+<br>
+<button id="huehuegamestartbutton" onclick="huehuestartthegame()">Start Game</button>
+<br>
+</div>
+<style>
+
+/* the power switch div thing */
+
+#huehuepowerswitchdivid {
+  color: var(--target-text-color);
+}
+
+/* the power switch button thing itself */
+
+#huehuepowerswitchbutton {
+  background: url(https://zazzerty.github.io/huehuesimulator/huehuegameseed3switchon.png);
+  cursor: pointer;
+  font-size: 1.5em;
+  width: 216px;
+  height: 240px;
+}
+</style>
+<div id="huehuepowerswitchdivid" style="display:none;">
+<button id="huehuepowerswitchbutton" onclick="poweron()"></button>
+</div>
+<center>
+<div id="huehuetargetone" style="display:none;">
+<button id="huehuetargetbuttonone" onclick="huehuetargetonedestroyed()">Huehue</button>
+</div>
+<br><br>
+<div id="huehuetargettwo" style="display:none;">
+<button id="huehuetargetbuttontwo" onclick="huehuetargettwodestroyed()">Huehue</button>
+</div>
+<br><br>
+<div id="huehuetargetthree" style="display:none;">
+<button id="huehuetargetbuttonthree" onclick="huehuetargetthreedestroyed()">Huehue</button>
+</div>
+<br><br>
+<div id="huehuetargetfour" style="display:none;">
+<button id="huehuetargetbuttonfour" onclick="huehuetargetfourdestroyed()">Huehue</button>
+</div>
+<br><br>
+<div id="huehuetargetfive" style="display:none;">
+<button id="huehuetargetbuttonfive" onclick="huehuetargetfivedestroyed()">Huehue</button>
+</div>
+<br><br>
+</center>
+<style>
+#huehueleveldonediv {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: help;
+  font-size: 1em;
+  text-align: left;
+}
+
+#huehuegameendbutton {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: copy;
+  font-size: 1em;
+}
+</style>
+<script>
+    function returntohomebutton() {
+        window.location.href="https://zazzerty.github.io/huehuesimulator/";
+    }
+</script>
+<div id="huehueleveldonediv" style="display:none;">
+<h1>You cleared Rust</h1>
+<hr>
+<button id="huehuegameendbutton" onclick="returntohomebutton()">Return to start</button>
+<br>
+</div>
+</body>
+</html>
