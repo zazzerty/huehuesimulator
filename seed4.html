@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Huehue Simulator - Seed 4</title>
+<script>
+// Source - https://stackoverflow.com/questions/73346380/making-a-div-move-randomly-around-using-css
+// Posted by code, modified by community. See post 'Timeline' for change history
+// Retrieved 2025-12-12, License - CC BY-SA 4.0
+
+const root = document.querySelector(":root"); // we first get the root element
+for(let i = 0; i < 10; i++) {
+  root.style.setProperty(`--rando${i}`, `${Math.floor(Math.random() * 450) + 1}px`);
+}
+</script>
+
+<style>
+/* this is where the main color variables are */
+
+:root {
+	--target-background: #66bf00;
+	--target-text-color: #ef6fa9;
+	--main-background: #5B6681;
+}
+</style>
+
+<style>
+
+@keyframes targetmoverandomone {
+  0% {left: var(--rando1); top: var(--rando1);}
+  20% {left: var(--rando1); top: var(--rando2);}
+  40% {left: var(--rando1); top: var(--rando3);}
+  60% {left: var(--rando1); top: var(--rando4);}
+  80% {left: var(--rando1); top: var(--rando5);}
+  100% {left: var(--rando1); top: var(--rando6);}
+}
+
+@keyframes targetmoverandomtwo {
+  0% {left: var(--rando2); top: var(--rando1);}
+  20% {left: var(--rando2); top: var(--rando2);}
+  40% {left: var(--rando2); top: var(--rando3);}
+  60% {left: var(--rando2); top: var(--rando4);}
+  80% {left: var(--rando2); top: var(--rando5);}
+  100% {left: var(--rando2); top: var(--rando6);}
+}
+
+@keyframes targetmoverandomthree {
+  0% {left: var(--rando3); top: var(--rando1);}
+  20% {left: var(--rando3); top: var(--rando2);}
+  40% {left: var(--rando3); top: var(--rando3);}
+  60% {left: var(--rando3); top: var(--rando4);}
+  80% {left: var(--rando3); top: var(--rando5);}
+  100% {left: var(--rando3); top: var(--rando6);}
+}
+
+@keyframes targetmoverandomfour {
+  0% {left: var(--rando4); top: var(--rando1);}
+  20% {left: var(--rando4); top: var(--rando2);}
+  40% {left: var(--rando4); top: var(--rando3);}
+  60% {left: var(--rando4); top: var(--rando4);}
+  80% {left: var(--rando4); top: var(--rando5);}
+  100% {left: var(--rando4); top: var(--rando6);}
+}
+
+@keyframes targetmoverandomfive {
+  0% {left: var(--rando5); top: var(--rando1);}
+  20% {left: var(--rando5); top: var(--rando2);}
+  40% {left: var(--rando5); top: var(--rando3);}
+  60% {left: var(--rando5); top: var(--rando4);}
+  80% {left: var(--rando5); top: var(--rando5);}
+  100% {left: var(--rando5); top: var(--rando6);}
+}
+
+body {
+background-color: var(--main-background);
+}
+
+#huehuetargetbuttonone {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 3em;
+}
+
+
+#huehuetargetbuttontwo {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 3em;
+}
+
+#huehuetargetbuttonthree {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 3em;
+}
+
+#huehuetargetbuttonfour {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 2em;
+}
+
+
+#huehuetargetbuttonfive {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 2em;
+}
+
+#huehuetargetone {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: targetmoverandomone;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+#huehuetargettwo {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: targetmoverandomtwo;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+#huehuetargetthree {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: targetmoverandomthree;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+#huehuetargetfour {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: targetmoverandomfour;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+#huehuetargetfive {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: targetmoverandomfive;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+#huehuetargetfourextraone {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: targetmoverandomfour;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  border: solid 0.5px var(--target-text-color);
+}
+
+#huehuetargetfourextratwo {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: targetmoverandomthree;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  border: solid 0.5px var(--target-text-color);
+}
+
+#huehuetargetfourextrathree {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: targetmoverandomtwo;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  border: solid 0.5px var(--target-text-color);
+}
+
+#huehuetargetfourextrafour {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: targetmoverandomone;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  border: solid 0.5px var(--target-text-color);
+}
+
+
+@keyframes huehuetargetfourextrafiveanim {
+  0% {left: var(--rando1); top: var(--rando3);}
+  20% {left: var(--rando2); top: var(--rando2);}
+  40% {left: var(--rando2); top: var(--rando3);}
+  60% {left: var(--rando3); top: var(--rando4);}
+  80% {left: var(--rando4); top: var(--rando3);}
+  100% {left: var(--rando4); top: var(--rando3);}
+}
+
+#huehuetargetfourextrafive {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: huehuetargetfourextrafiveanim;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  border: solid 0.5px var(--target-text-color);
+}
+
+@keyframes huehuetargetfourextrasixanim {
+  0% {left: var(--rando2); top: var(--rando5);}
+  20% {left: var(--rando5); top: var(--rando2);}
+  40% {left: var(--rand03); top: var(--rando1);}
+  60% {left: var(--rando1); top: var(--rando3);}
+  80% {left: var(--rando4); top: var(--rando2);}
+  100% {left: var(--rando2); top: var(--rando4);}
+}
+
+#huehuetargetfourextrasix {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: huehuetargetfourextrasixanim;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  border: solid 0.5px var(--target-text-color);
+}
+
+@keyframes huehuetargetfourextrasevenanim {
+  0% {left: var(--rando1); top: var(--rando4);}
+  20% {left: var(--rando5); top: var(--rando2);}
+  40% {left: var(--rando2); top: var(--rando3);}
+  60% {left: var(--rando1); top: var(--rando5);}
+  80% {left: var(--rando3); top: var(--rando3);}
+  100% {left: var(--rando2); top: var(--rando4);}
+}
+
+#huehuetargetfourextraseven {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: huehuetargetfourextrasevenanim;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  border: solid 0.5px var(--target-text-color);
+}
+
+</style>
+</head>
+<script>
+var hitsound = new Audio ('https://zazzerty.github.io/huehuesimulator/huehuegametargethitsound.mp3');
+
+function huehuestartthegame() {
+	hitsound.play()
+	document.getElementById("huehuegamestart").style.display="none"; 
+	document.getElementById("huehuetargetone").style.display="inline-block";
+	document.getElementById("huehuetargetfakeconstant").style.display="inline-block";
+}
+
+function huehuetargetonedestroyed() {
+	hitsound.play()
+	document.getElementById("huehuetargetone").style.display="none"; 
+	document.getElementById("huehuetargettwo").style.display="inline-block"; 
+}
+
+function huehuetargettwodestroyed() { 
+	hitsound.play()
+	document.getElementById("huehuetargettwo").style.display="none"; 
+	document.getElementById("huehuetargetthree").style.display="inline-block"; 
+}
+function huehuetargetthreedestroyed() {
+	hitsound.play() 
+	document.getElementById("huehuetargetthree").style.display="none"; 
+	document.getElementById("huehuetargetfour").style.display="inline-block"; 
+}
+
+function huehuetargetfourdestroyed() {
+	hitsound.play()
+	document.getElementById("huehuetargetfour").style.display="none";
+	document.getElementById("huehuetargetfourextraone").style.display="inline-block";
+	document.getElementById("huehuetargetfourextratwo").style.display="inline-block";
+	document.getElementById("huehuetargetfourextrathree").style.display="inline-block";
+	document.getElementById("huehuetargetfourextrafour").style.display="inline-block";
+	document.getElementById("huehuetargetfive").style.display="inline-block";
+	document.getElementById("huehuetargetfourextrafive").style.display="inline-block";
+	document.getElementById("huehuetargetfourextrasix").style.display="inline-block";
+	document.getElementById("huehuetargetfourextraseven").style.display="inline-block";
+}
+
+function huehuetargetfivedestroyed() { 
+	hitsound.play()
+	document.getElementById("huehuetargetfive").style.display="none"; 
+	document.getElementById("huehueleveldonediv").style.display="inline-block"; 
+}
+</script>
+<body>
+<style>
+
+#huehuegamestart {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: help;
+  font-size: 1em;
+  text-align: left;
+}
+
+#huehuegamestartbutton {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: copy;
+  font-size: 1em;
+}
+
+</style>
+<style>
+/*faker that always appears*/
+
+@keyframes huehuefaketargetconst {
+  0% {left: var(--rando3); top: var(--rando4);}
+  20% {left: var(--rando1); top: var(--rando5);}
+  40% {left: var(--rando4); top: var(--rando1);}
+  60% {left: var(--rando2); top: var(--rando3);}
+  80% {left: var(--rando1); top: var(--rando2);}
+  100% {left: var(--rando1); top: var(--rando4);}
+}
+
+#huehuetargetfakeconstant {
+  color: var(--target-text-color);
+  position: relative;
+  animation-name: huehuefaketargetconst;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+}
+
+#huehuefakeconstanttargetbutton {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 4.5em;
+}
+</style>
+<div id="huehuegamestart">
+<h1>Flash</h1>
+<hr>
+<p>Why are there still so many of them?</p>
+<p>You aren't safe, click them away.</p>
+<p>Although I heard fakers that "rewind time" exist.</p>
+<p>Try taking your time with these ones</p>
+<br>
+<button id="huehuegamestartbutton" onclick="huehuestartthegame()">Start Game</button>
+<br>
+</div>
+<center>
+<div id="huehuetargetfakeconstant" style="display:none;">
+<button id="huehuefakeconstanttargetbutton" onclick="location.reload()">Huehue</button>
+</div>
+<br><br>
+<div id="huehuetargetone" style="display:none;">
+<button id="huehuetargetbuttonone" onclick="huehuetargetonedestroyed()">Huehue</button>
+</div>
+<br><br>
+<div id="huehuetargettwo" style="display:none;">
+<button id="huehuetargetbuttontwo" onclick="huehuetargettwodestroyed()">Huehue</button>
+</div>
+<br><br>
+<div id="huehuetargetthree" style="display:none;">
+<button id="huehuetargetbuttonthree" onclick="huehuetargetthreedestroyed()">Huehue</button>
+</div>
+<br><br>
+<div id="huehuetargetfour" style="display:none;">
+<button id="huehuetargetbuttonfour" onclick="huehuetargetfourdestroyed()">Huehue</button>
+</div>
+<br><br>
+<div id="huehuetargetfourextraone" style="display:none;">
+<button id="huehuetargetbuttonfour" onclick="location.reload()">Huehue</button>
+</div>
+<br><br>
+<div id="huehuetargetfourextratwo" style="display:none;">
+<button id="huehuetargetbuttonfour" onclick="location.reload()">Huehue</button>
+</div>
+<br><br>
+<div id="huehuetargetfourextrathree" style="display:none;">
+<button id="huehuetargetbuttonfour" onclick="location.reload()">Huehue</button>
+</div>
+<br><br>
+<div id="huehuetargetfourextrafour" style="display:none;">
+<button id="huehuetargetbuttonfour" onclick="location.reload()">Huehue</button>
+</div>
+<br><br>
+<div id="huehuetargetfourextrafive" style="display:none;">
+<button id="huehuetargetbuttonfour" onclick="">Huehue</button>
+</div>
+<br><br>
+<div id="huehuetargetfourextrasix" style="display:none;">
+<button id="huehuetargetbuttonfour" onclick="">Huehue</button>
+</div>
+<br><br>
+<div id="huehuetargetfourextraseven" style="display:none;">
+<button id="huehuetargetbuttonfour" onclick="">Huehue</button>
+</div>
+<br><br>
+<div id="huehuetargetfive" style="display:none;">
+<button id="huehuetargetbuttonfive" onclick="huehuetargetfivedestroyed()">Huehue</button>
+</div>
+<br><br>
+</center>
+<style>
+#huehueleveldonediv {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: help;
+  font-size: 1em;
+  text-align: left;
+}
+
+#huehuegameendbutton {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: copy;
+  font-size: 1em;
+}
+</style>
+<script>
+    function returntohomebutton() {
+        window.location.href="https://zazzerty.github.io/huehuesimulator/";
+    }
+</script>
+<div id="huehueleveldonediv" style="display:none;">
+<h1>You cleared Flash</h1>
+<hr>
+<button id="huehuegameendbutton" onclick="returntohomebutton()">Return to start</button>
+<br>
+</div>
+</body>
+</html>
