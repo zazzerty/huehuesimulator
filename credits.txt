@@ -1,7 +1,9 @@
 HueHue Simulator Credits
 
+'zazzerty' is the creator of this github site
+
 == Home Page ==
-Programming: zazzerty
+Programming: zazzerty 
 
 == Seed 0: Mono-Dirt Road ==
 Programming: zazzerty
