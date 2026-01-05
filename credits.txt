@@ -27,8 +27,8 @@ Programming: zazzerty
 == Seed 5: Timer ==
 Programming: zazzerty
 
-
-
+== Seed 6: The Terminal ==
+Programming: zazzerty
 
 
 
