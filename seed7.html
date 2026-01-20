@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Huehue Simulator - Seed 7</title>
+<script>
+// Source - https://stackoverflow.com/questions/73346380/making-a-div-move-randomly-around-using-css
+// Posted by code, modified by community. See post 'Timeline' for change history
+// Retrieved 2025-12-12, License - CC BY-SA 4.0
+
+const root = document.querySelector(":root"); // we first get the root element
+for(let i = 0; i < 10; i++) {
+  root.style.setProperty(`--rando${i}`, `${Math.floor(Math.random() * 125) + 1}px`);
+}
+</script>
+
+<style>
+/* this is where the main color variables are */
+
+:root { 
+--target-background: #302e00; 
+--target-text-color: #24fc03; 
+--main-background: #70706c; 
+}
+</style>
+
+<style>
+
+/* 
+
+commenting these out because I won't need these animations, but need them for reference
+
+@keyframes targetmoverandomone {
+  0% {left: var(--rando0); top: var(--rando1);}
+  20% {left: var(--rando2); top: var(--rando3);}
+  40% {left: var(--rando4); top: var(--rando5);}
+  60% {left: var(--rando6); top: var(--rando7);}
+  80% {left: var(--rando4); top: var(--rando5);}
+  100% {left: var(--rando1); top: var(--rando0);}
+}
+
+@keyframes targetmoverandomtwo {
+  0% {left: var(--rando1); top: var(--rando1);}
+  20% {left: var(--rando2); top: var(--rando3);}
+  40% {left: var(--rando3); top: var(--rando5);}
+  60% {left: var(--rando4); top: var(--rando4);}
+  80% {left: var(--rando2); top: var(--rando3);}
+  100% {left: var(--rando1); top: var(--rando0);}
+}
+
+@keyframes targetmoverandomthree {
+  0% {left: var(--rando0); top: var(--rando1);}
+  20% {left: var(--rando3); top: var(--rando3);}
+  40% {left: var(--rando2); top: var(--rando5);}
+  60% {left: var(--rando1); top: var(--rando7);}
+  80% {left: var(--rando4); top: var(--rando5);}
+  100% {left: var(--rando1); top: var(--rando3);}
+}
+
+@keyframes targetmoverandomfour {
+  0% {left: var(--rando1); top: var(--rando1);}
+  20% {left: var(--rando0); top: var(--rando3);}
+  40% {left: var(--rando0); top: var(--rando0);}
+  60% {left: var(--rando4); top: var(--rando7);}
+  80% {left: var(--rando4); top: var(--rando5);}
+  100% {left: var(--rando1); top: var(--rando6);}
+}
+
+@keyframes targetmoverandomfive {
+  0% {left: var(--rando0); top: var(--rando1);}
+  20% {left: var(--rando2); top: var(--rando3);}
+  40% {left: var(--rando4); top: var(--rando5);}
+  60% {left: var(--rando6); top: var(--rando7);}
+  80% {left: var(--rando0); top: var(--rando5);}
+  100% {left: var(--rando1); top: var(--rando6);}
+}
+
+*/
+
+body {
+background-color: var(--main-background);
+}
+
+.huehuefakeig {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 2em;
+}
+
+#huehuetargetbuttonone {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 2em;
+}
+
+#huehuetargetbuttontwo {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 2em;
+}
+
+#huehuetargetbuttonthree {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 2em;
+}
+
+#huehuetargetbuttonfour {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 0.9em;
+}
+
+
+#huehuetargetbuttonfive {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: crosshair;
+  font-size: 0.9em;
+}
+
+#huehuetargetone {
+  color: var(--target-text-color);
+  position: relative;
+  left: var(--rando1); 
+  top: var(--rando2);
+  z-index: 1;
+}
+
+#huehuetargettwo {
+  color: var(--target-text-color);
+  position: relative;
+  left: var(--rando6); 
+  top: var(--rando4);
+  z-index: 1;
+}
+
+#huehuetargetthree {
+  color: var(--target-text-color);
+  position: relative;
+  left: var(--rando5); 
+  top: var(--rando6);
+  z-index: 1;
+}
+
+#huehuetargetfour {
+  color: var(--target-text-color);
+  position: relative;
+  left: var(--rando6); 
+  top: var(--rando2);
+  z-index: 1;
+  animation: huehuephantom 1s infinite, huehuespin 1.5s infinite;
+}
+
+#huehuetargetfive {
+  color: var(--target-text-color);
+  position: relative;
+  left: var(--rando9); 
+  top: var(--rando9);
+  z-index: 1;
+  animation: huehuephantom 1s infinite, huehuespin 1.5s infinite;
+}
+</style>
+</head>
+<script>
+var hitsound = new Audio ('https://zazzerty.github.io/huehuesimulator/huehuegametargethitsound.mp3');
+
+function huehuestartthegame() {
+	hitsound.play()
+	document.getElementById("huehuegamestart").style.display="none"; 
+	document.getElementById("huehuetargetone").style.display="inline-block";
+	document.getElementById("huehueonefakeone").style.display="inline-block";
+	document.getElementById("huehueonefaketwo").style.display="inline-block";
+	document.getElementById("huehueonefakethree").style.display="inline-block";
+	document.getElementById("huehueonefakefour").style.display="inline-block";
+	document.getElementById("huehueonefakefive").style.display="inline-block";
+	document.getElementById("huehueonefakesix").style.display="inline-block";
+	document.getElementById("huehueonefakeseven").style.display="inline-block";
+	document.getElementById("huehueonefakeeight").style.display="inline-block";
+}
+
+function huehuetargetonedestroyed() {
+	hitsound.play()
+	document.getElementById("huehuetargetone").style.display="none";
+	document.getElementById("huehueonefakeone").style.display="none";
+	document.getElementById("huehueonefaketwo").style.display="none";
+	document.getElementById("huehueonefakethree").style.display="none";
+	document.getElementById("huehueonefakefour").style.display="none";
+	document.getElementById("huehueonefakefive").style.display="none";
+	document.getElementById("huehueonefakesix").style.display="none";
+	document.getElementById("huehueonefakeseven").style.display="none";
+	document.getElementById("huehueonefakeeight").style.display="none";
+	document.getElementById("huehuetargettwo").style.display="inline-block";
+	document.getElementById("huehuetwofakeone").style.display="inline-block";
+	document.getElementById("huehuetwofaketwo").style.display="inline-block";
+	document.getElementById("huehuetwofakethree").style.display="inline-block";
+	document.getElementById("huehuetwofakefour").style.display="inline-block";
+	document.getElementById("huehuetwofakefive").style.display="inline-block";
+	document.getElementById("huehuetwofakesix").style.display="inline-block";
+	document.getElementById("huehuetwofakeseven").style.display="inline-block";
+	document.getElementById("huehuetwofakeeight").style.display="inline-block";
+	document.getElementById("huehuetwofakenine").style.display="inline-block";
+	document.getElementById("huehuetwofaketen").style.display="inline-block";
+}
+
+function huehuetargettwodestroyed() { 
+	hitsound.play()
+	document.getElementById("huehuetargettwo").style.display="none";
+	document.getElementById("huehuetwofakeone").style.display="none";
+	document.getElementById("huehuetwofaketwo").style.display="none";
+	document.getElementById("huehuetwofakethree").style.display="none";
+	document.getElementById("huehuetwofakefour").style.display="none";
+	document.getElementById("huehuetwofakefive").style.display="none";
+	document.getElementById("huehuetwofakesix").style.display="none";
+	document.getElementById("huehuetwofakeseven").style.display="none";
+	document.getElementById("huehuetwofakeeight").style.display="none";
+	document.getElementById("huehuetwofakenine").style.display="none";
+	document.getElementById("huehuetwofaketen").style.display="none";
+	document.getElementById("huehuetargetthree").style.display="inline-block";
+	document.getElementById("huehuethreefakeone").style.display="inline-block";
+	document.getElementById("huehuethreefaketwo").style.display="inline-block";
+	document.getElementById("huehuethreefakethree").style.display="inline-block";
+	document.getElementById("huehuethreefakefour").style.display="inline-block";
+	document.getElementById("huehuethreefakefive").style.display="inline-block";
+	document.getElementById("huehuethreefakesix").style.display="inline-block";
+	document.getElementById("huehuethreefakeseven").style.display="inline-block";
+	document.getElementById("huehuethreefakeeight").style.display="inline-block";
+	document.getElementById("huehuethreefakenine").style.display="inline-block";
+	document.getElementById("huehuethreefaketen").style.display="inline-block";
+	document.getElementById("huehuethreefakeeleven").style.display="inline-block";
+	document.getElementById("huehuethreefaketwelve").style.display="inline-block";
+	document.getElementById("huehuethreefakethirteen").style.display="inline-block";
+	document.getElementById("huehuethreefakefourteen").style.display="inline-block";
+}
+function huehuetargetthreedestroyed() {
+	hitsound.play() 
+	document.getElementById("huehuetargetthree").style.display="none"; 
+	document.getElementById("huehuetargetfour").style.display="inline-block";
+	document.getElementById("huehuethreefakeone").style.display="none";
+	document.getElementById("huehuethreefaketwo").style.display="none";
+	document.getElementById("huehuethreefakethree").style.display="none";
+	document.getElementById("huehuethreefakefour").style.display="none";
+	document.getElementById("huehuethreefakefive").style.display="none";
+	document.getElementById("huehuethreefakesix").style.display="none";
+	document.getElementById("huehuethreefakeseven").style.display="none";
+	document.getElementById("huehuethreefakeeight").style.display="none";
+	document.getElementById("huehuethreefakenine").style.display="none";
+	document.getElementById("huehuethreefaketen").style.display="none";
+	document.getElementById("huehuethreefakeeleven").style.display="none";
+	document.getElementById("huehuethreefaketwelve").style.display="none";
+	document.getElementById("huehuethreefakethirteen").style.display="none";
+	document.getElementById("huehuethreefakefourteen").style.display="none";
+	document.getElementById("huehuefourfakeone").style.display="inline-block";
+	document.getElementById("huehuefourfaketwo").style.display="inline-block";
+	document.getElementById("huehuefourfakethree").style.display="inline-block";
+	document.getElementById("huehuefourfakefour").style.display="inline-block";
+	document.getElementById("huehuefourfakefive").style.display="inline-block";
+}
+
+function huehuetargetfourdestroyed() {
+	hitsound.play()
+	document.getElementById("huehuetargetfour").style.display="none"; 
+	document.getElementById("huehuetargetfive").style.display="inline-block";
+	document.getElementById("huehuethreefakeone").style.display="inline-block";
+	document.getElementById("huehuethreefaketwo").style.display="inline-block";
+	document.getElementById("huehuethreefakethree").style.display="inline-block";
+	document.getElementById("huehuethreefakefour").style.display="inline-block";
+	document.getElementById("huehuethreefakefive").style.display="inline-block";
+	document.getElementById("huehuethreefakesix").style.display="inline-block";
+	document.getElementById("huehuethreefakeseven").style.display="inline-block";
+	document.getElementById("huehuethreefakeeight").style.display="inline-block";
+	document.getElementById("huehuethreefakenine").style.display="inline-block";
+	document.getElementById("huehuethreefaketen").style.display="inline-block";
+	document.getElementById("huehuethreefakeeleven").style.display="inline-block";
+	document.getElementById("huehuethreefaketwelve").style.display="inline-block";
+	document.getElementById("huehuethreefakethirteen").style.display="inline-block";
+	document.getElementById("huehuethreefakefourteen").style.display="inline-block";
+	document.getElementById("huehueonefakeone").style.display="inline-block";
+	document.getElementById("huehueonefaketwo").style.display="inline-block";
+	document.getElementById("huehueonefakethree").style.display="inline-block";
+	document.getElementById("huehueonefakefour").style.display="inline-block";
+	document.getElementById("huehueonefakefive").style.display="inline-block";
+	document.getElementById("huehueonefakesix").style.display="inline-block";
+	document.getElementById("huehueonefakeseven").style.display="inline-block";
+	document.getElementById("huehueonefakeeight").style.display="inline-block";
+}
+
+function huehuetargetfivedestroyed() { 
+	hitsound.play()
+	document.getElementById("huehuetargetfive").style.display="none"; 
+	document.getElementById("huehueleveldonediv").style.display="inline-block"; 
+}
+</script>
+<body>
+<style>
+
+#huehuegamestart {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: help;
+  font-size: 1em;
+  text-align: left;
+}
+
+#huehuegamestartbutton {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: copy;
+  font-size: 1em;
+}
+
+</style>
+<div id="huehuegamestart">
+<h1>The Warehouse</h1>
+<hr>
+<p>The Huehues doubled down on creating more fakes.</p>
+<p>We have tracked down a warehouse in which they are storing these fakes.</p>
+<p>As soon as we discovered this, they went into hiding in the warehouse</p>
+<p>There also may be a few phantoms, we aren't too sure</p>
+<p>Clear out the real Huehues, we'll get the rest.</p>
+<br>
+<button id="huehuegamestartbutton" onclick="huehuestartthegame()">Start Game</button>
+<br>
+</div>
+
+<style>
+#huehueonefakeone {
+position: relative;
+left: var(--rando1); 
+top: var(--rando8);
+z-index: 2;
+}
+
+#huehueonefaketwo {
+position: relative;
+left: var(--rando9); 
+top: var(--rando3);
+z-index: 3;
+}
+
+#huehueonefakethree {
+position: relative;
+left: var(--rando7); 
+top: var(--rando4);
+z-index: 2;
+}
+
+#huehueonefakefour {
+position: relative;
+left: var(--rando8); 
+top: var(--rando2);
+z-index: 3;
+}
+
+#huehueonefakefive {
+position: relative;
+left: var(--rando2); 
+top: var(--rando1);
+z-index: 2;
+}
+
+#huehueonefakesix {
+position: relative;
+left: var(--rando3); 
+top: var(--rando0);
+z-index: 3;
+}
+
+#huehueonefakeseven {
+position: relative;
+left: var(--rando0); 
+top: var(--rando4);
+z-index: 2;
+}
+
+#huehueonefakeeight {
+position: relative;
+left: var(--rando5); 
+top: var(--rando0);
+z-index: 3;
+}
+</style>
+
+<div id="huehueonefakeone" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">Huhuee</button>
+</div>
+<div id="huehueonefaketwo" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">Huhuhe</button>
+</div>
+<div id="huehueonefakethree" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">Hueehu</button>
+</div>
+<div id="huehueonefakefour" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">Heuheu</button>
+</div>
+<div id="huehuetargetone" style="display:none;">
+<button id="huehuetargetbuttonone" onclick="huehuetargetonedestroyed()">Huehue</button>
+</div>
+<div id="huehueonefakefive" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">Heueuh</button>
+</div>
+<div id="huehueonefakesix" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">Hueehu</button>
+</div>
+<div id="huehueonefakeseven" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">Hueeee</button>
+</div>
+<div id="huehueonefakeeight" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">Heuuhe</button>
+</div>
+<br><br>
+<br><br>
+
+<style>
+#huehuetwofakeone {
+position: relative;
+left: var(--rando3); 
+top: var(--rando0);
+z-index: 4;
+}
+
+#huehuetwofaketwo {
+position: relative;
+left: var(--rando9); 
+top: var(--rando0);
+z-index: 4;
+}
+
+#huehuetwofakethree {
+position: relative;
+left: var(--rando0); 
+top: var(--rando4);
+z-index: 4;
+}
+
+#huehuetwofakefour {
+position: relative;
+left: var(--rando8); 
+top: var(--rando4);
+z-index: 4;
+}
+
+#huehuetwofakefive {
+position: relative;
+left: var(--rando4); 
+top: var(--rando5);
+z-index: 4;
+}
+
+#huehuetwofakesix {
+position: relative;
+left: var(--rando7); 
+top: var(--rando0);
+z-index: 4;
+}
+
+#huehuetwofakeseven {
+position: relative;
+left: var(--rando3); 
+top: var(--rando7);
+z-index: 4;
+}
+
+#huehuetwofakeeight {
+position: relative;
+left: var(--rando9); 
+top: var(--rando1);
+z-index: 4;
+}
+
+#huehuetwofakenine {
+position: relative;
+left: var(--rando1); 
+top: var(--rando4);
+z-index: 4;
+}
+
+#huehuetwofaketen {
+position: relative;
+left: var(--rando2); 
+top: var(--rando9);
+z-index: 4;
+}
+</style>
+
+<div id="huehuetwofakeone" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">ehuehuh</button>
+</div>
+<div id="huehuetwofaketwo" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">HEuehe</button>
+</div>
+<div id="huehuetwofakethree" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">UEheue</button>
+</div>
+<div id="huehuetwofakefour" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">HEUEUh</button>
+</div>
+<div id="huehuetargettwo" style="display:none;">
+<button id="huehuetargetbuttontwo" onclick="huehuetargettwodestroyed()">Huehue</button>
+</div>
+<div id="huehuetwofakefive" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">EUHEhe</button>
+</div>
+<div id="huehuetwofakesix" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">UeUEHE</button>
+</div>
+<div id="huehuetwofakeseven" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">EuHeuU</button>
+</div>
+<div id="huehuetwofakeeight" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">UUEEHu</button>
+</div>
+<div id="huehuetwofakeseven" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">EUehue</button>
+</div>
+<div id="huehuetwofakeeight" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">HEEHEE</button>
+</div>
+<div id="huehuetwofakenine" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">UEEUEU</button>
+</div>
+<div id="huehuetwofaketen" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">EUEHEU</button>
+</div>
+
+<br>
+
+<style>
+#huehuethreefakeone {
+position: relative;
+left: var(--rando0); 
+top: var(--rando0);
+z-index: 4;
+}
+
+#huehuethreefaketwo {
+position: relative;
+left: var(--rando5); 
+top: var(--rando0);
+z-index: 4;
+}
+
+#huehuethreefakethree {
+position: relative;
+left: var(--rando0); 
+top: var(--rando5);
+z-index: 4;
+}
+
+#huehuethreefakefour {
+position: relative;
+left: var(--rando8); 
+top: var(--rando4);
+z-index: 4;
+}
+
+#huehuethreefakefive {
+position: relative;
+left: var(--rando4); 
+top: var(--rando8);
+z-index: 4;
+}
+
+#huehuethreefakesix {
+position: relative;
+left: var(--rando3); 
+top: var(--rando3);
+z-index: 4;
+}
+
+#huehuethreefakeseven {
+position: relative;
+left: var(--rando7); 
+top: var(--rando7);
+z-index: 4;
+}
+
+#huehuethreefakeeight {
+position: relative;
+left: var(--rando9); 
+top: var(--rando9);
+z-index: 4;
+}
+
+#huehuethreefakenine {
+position: relative;
+left: var(--rando1); 
+top: var(--rando1);
+z-index: 4;
+}
+
+#huehuethreefaketen {
+position: relative;
+left: var(--rando9); 
+top: var(--rando2);
+z-index: 4;
+}
+
+#huehuethreefakeeleven {
+position: relative;
+left: var(--rando1); 
+top: var(--rando2);
+z-index: 4;
+}
+
+#huehuethreefaketwelve {
+position: relative;
+left: var(--rando7); 
+top: var(--rando3);
+z-index: 4;
+}
+
+#huehuethreefakethirteen {
+position: relative;
+left: var(--rando0); 
+top: var(--rando2);
+z-index: 4;
+}
+
+#huehuethreefakefourteen {
+position: relative;
+left: var(--rando0); 
+top: var(--rando4);
+z-index: 4;
+}
+</style>
+
+<div id="huehuethreefakeone" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">ehuUEuh</button>
+</div>
+<div id="huehuethreefaketwo" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">HEUEHEU</button>
+</div>
+<div id="huehuethreefakethree" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">HUEHEUEU</button>
+</div>
+<div id="huehuethreefakefour" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">EUHUEhHuh</button>
+</div>
+<div id="huehuethreefakefive" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">EUHUehh</button>
+</div>
+<div id="huehuethreefakesix" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">uehheU</button>
+</div>
+<div id="huehuetargetthree" style="display:none;">
+<button id="huehuetargetbuttonthree" onclick="huehuetargetthreedestroyed()">Huehue</button>
+</div>
+<div id="huehuethreefakeseven" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">ueHUHe</button>
+</div>
+<div id="huehuethreefakeeight" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">HUUhu</button>
+</div>
+<div id="huehuethreefakenine" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">uEHEH</button>
+</div>
+<div id="huehuethreefaketen" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">UEHHhhhE</button>
+</div>
+<div id="huehuethreefakeeleven" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">HEhHhhHHue</button>
+</div>
+<div id="huehuethreefaketwelve" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">HEUhhuh</button>
+</div>
+
+<!-- the reason I added the 5th huehue target here is to make it a bit more difficult -->
+<div id="huehuetargetfive" style="display:none;">
+<button id="huehuetargetbuttonfive" onclick="huehuetargetfivedestroyed()">Huehue</button>
+</div>
+
+<div id="huehuethreefakethirteen" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">HEeeEuh</button>
+</div>
+<div id="huehuethreefakefourteen" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">UEuEeEHHU</button>
+</div>
+
+<style>
+@keyframes huehuespin {
+
+from {
+transform:rotate(0deg);
+}
+	
+to {
+transform:rotate(360deg);
+}
+
+}
+
+@keyframes huehuephantom {
+
+0% {
+opacity: 1;
+}
+
+25% {
+opacity: 0.5;
+}
+
+50% {
+opacity: 0;
+}
+
+75% {
+opacity: 0.5;
+}
+
+100% {
+opacity: 1;
+}
+
+}
+</style>
+
+
+<style>
+#huehuefourfakeone {
+position: relative;
+left: var(--rando0); 
+top: var(--rando9);
+z-index: 4;
+animation: huehuephantom 1s infinite, huehuespin 1.5s infinite;
+}
+
+#huehuefourfaketwo {
+position: relative;
+left: var(--rando1); 
+top: var(--rando8);
+z-index: 4;
+animation: huehuephantom 1s infinite, huehuespin 1.5s infinite;
+}
+
+#huehuefourfakethree {
+position: relative;
+left: var(--rando2); 
+top: var(--rando7);
+z-index: 4;
+animation: huehuephantom 1s infinite, huehuespin 1.5s infinite;
+}
+
+#huehuefourfakefour {
+position: relative;
+left: var(--rando3); 
+top: var(--rando5);
+z-index: 4;
+animation: huehuephantom 1s infinite, huehuespin 1.5s infinite;
+}
+
+#huehuefourfakefive {
+position: relative;
+left: var(--rando4); 
+top: var(--rando3);
+z-index: 4;
+animation: huehuephantom 1s infinite, huehuespin 1.5s infinite;
+}
+</style>
+
+<br>
+
+<div id="huehuefourfakeone" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">EUEHEHEHEEUEHUEHUEHUHUHEEU</button>
+</div>
+<div id="huehuetargetfour" style="display:none;">
+<button id="huehuetargetbuttonfour" onclick="huehuetargetfourdestroyed()">Huehue</button>
+</div>
+<div id="huehuefourfaketwo" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">HEUEUUEEUEHEEUEHEEEEHEUEH</button>
+</div>
+<div id="huehuefourfakethree" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">HUEUEHEUEHEUEHEUEHEUEHEUEH</button>
+</div>
+<div id="huehuefourfakefour" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">HEUEHEUEHEUEEEEUEHEUEEHEUEH</button>
+</div>
+<div id="huehuefourfakefive" style="display:none;">
+<button class="huehuefakeig" onclick="location.reload()">EUHEEUEUEHEEUEHEUEHEUEHE</button>
+</div>
+
+<br><br>
+
+<style>
+#huehueleveldonediv {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: help;
+  font-size: 1em;
+  text-align: left;
+}
+
+#huehuegameendbutton {
+  background-color: var(--target-background);
+  color: var(--target-text-color);
+  cursor: copy;
+  font-size: 1em;
+}
+</style>
+<script>
+    function returntohomebutton() {
+        window.location.href="https://zazzerty.github.io/huehuesimulator/";
+    }
+</script>
+<div id="huehueleveldonediv" style="display:none;">
+<h1>You cleared The Warehouse</h1>
+<hr>
+<button id="huehuegameendbutton" onclick="returntohomebutton()">Return to start</button>
+<br>
+</div>
+</body>
+</html>
