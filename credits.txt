@@ -30,7 +30,8 @@ Programming: zazzerty
 == Seed 6: The Terminal ==
 Programming: zazzerty
 
-
+== Seed 7: The Warehouse ==
+Programming: zazzerty
 
 == Other assets ==
 
