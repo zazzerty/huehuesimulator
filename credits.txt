@@ -33,6 +33,8 @@ Programming: zazzerty
 == Seed 7: The Warehouse ==
 Programming: zazzerty
 
-== Other assets ==
 
+
+
+== Other assets ==
 Huehue target click sound (huehuegametargethitsound.mp3): zazzerty
