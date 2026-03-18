@@ -33,6 +33,11 @@ Programming: zazzerty
 == Seed 7: The Warehouse ==
 Programming: zazzerty
 
+== Seed 8: Lunar Zone ==
+Programming: zazzerty
+
+== Seed 9: LRLRLR ==
+Programming: zazzerty
 
 
 
